@@ -66,3 +66,20 @@ function wad_add_links($links)
    array_push($links, $link);
    return $links;
 }
+
+
+// adding row action links
+add_filter('plugin_row_meta', 'wad_add_rows', 10, 2);
+
+// Adding row action links
+add_filter('plugin_row_meta', 'wad_add_rows', 10, 2);
+
+function wad_add_rows($links, $plugin)
+{
+   if (plugin_basename(__FILE__) == $plugin) {
+      $link = sprintf("<a href='%s' style='color:#ff3c41;'>%s</a>", esc_url('https://github.com/REZWANUL1'), __('Fork on Github', 'plac'));
+      array_push($links, $link);
+   }
+
+   return $links;
+}
