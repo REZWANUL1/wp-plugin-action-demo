@@ -56,3 +56,13 @@ function wad_redirect_plugin_page($plugin)
       die();
    }
 }
+// Redirect user to plugin options page
+
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'wad_add_links');
+
+function wad_add_links($links)
+{
+   $link = sprintf("<a href='%s'>%s</a>", admin_url('admin.php?page=wad_custompage'), 'settings');
+   array_push($links, $link);
+   return $links;
+}
